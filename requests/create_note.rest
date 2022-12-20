@@ -1,0 +1,15 @@
+POST http://localhost:3001/api/notas HTTP/1.1
+Content-Type: application/json
+
+{
+    "content": "Esto es una nueva nota",
+    "important": true
+}
+
+###
+
+//Ejemplo de creacion para que salte error.
+POST http://localhost:3001/api/notas HTTP/1.1
+Content-Type: application/json
+
+{}
