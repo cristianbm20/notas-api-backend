@@ -7,6 +7,12 @@ app.use(express.json())
 app.use(logger)
 app.use(cors())
 
+app.get('/api/fechaActual', (req, res) => {
+  const fechaActual = new Date()
+  res.send(`<h1>Fecha y hora actual</h1>
+  <p>${fechaActual}</p>`)
+})
+
 let notas = [
   {
     id: 1,
