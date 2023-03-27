@@ -1,7 +1,7 @@
 {
   "name": "api_express",
   "version": "1.0.0",
-  "description": "API tutorial midudev",
+  "description": "API example with Express",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Cristian Bermudez",
+  "author": "Cristian Bermudez Martinez",
   "license": "ISC",
   "dependencies": {
     "cors": "2.8.5",
