@@ -2,10 +2,22 @@ const express = require('express')
 const app = express()
 const logger = require('./loggerMiddleware')
 const cors = require('cors')
+// Modulos necesarios para conexion https
+const https = require('https')
+const fs = require('fs')
 
 app.use(express.json())
 app.use(logger)
 app.use(cors())
+
+// Cargamos certificado y clave privada
+const privateKey = fs.readFileSync('/Applications/XAMPP/etc/ssl.key/server.key', 'utf8')
+const certificate = fs.readFileSync('/Applications/XAMPP/etc/ssl.crt/server.crt', 'utf8')
+
+const credentials = {
+  key: privateKey,
+  cert: certificate
+}
 
 app.get('/api/fechaActual', (req, res) => {
   const fechaActual = new Date()
@@ -83,8 +95,11 @@ app.use((req, res) => {
   })
 })
 
+// Creamos server https
+const httpsServer = https.createServer(credentials, app)
+
 const PORT = process.env.PORT || 3001
 
-app.listen(PORT, () => {
+httpsServer.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
